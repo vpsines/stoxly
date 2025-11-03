@@ -16,9 +16,6 @@ if(!cached){
 }
 
 export const connectToDatabase =  async  () => {
-    console.log(MONGODB_URI)
-
-    console.log(process.env);
 
     if(!MONGODB_URI ) throw new Error("MongoDB URI must be within .env");
 
