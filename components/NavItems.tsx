@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react'
-import {NAV_ITEMS} from "@/lib/contants";
+import {NAV_ITEMS} from "@/lib/constants";
 import {usePathname} from "next/navigation";
 import SearchCommand from "@/components/SearchCommand";
+import Link from "next/link";
 
 const NavItems = ({initialStocks}:{initialStocks:StockWithWatchlistStatus[]}) => {
     const pathName = usePathname()
@@ -26,9 +27,13 @@ const NavItems = ({initialStocks}:{initialStocks:StockWithWatchlistStatus[]}) =>
                           />
                       </li>
                     )
-                  return <li key={href} className={`hover:text-yellow-500 transition-colors ${
-                        isActive(href) ? 'text-grey-100':''
-                    }`}>{label}</li>
+                  return <li key={href}>
+                      <Link href={href} className={`hover:text-yellow-500 transition-colors ${
+                          isActive(href) ? 'text-grey-100':''
+                      }`}>
+                      {label}
+                  </Link>
+                  </li>
                     }
                 )
             }
