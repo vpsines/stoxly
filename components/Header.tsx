@@ -3,8 +3,12 @@ import Link from "next/link";
 import Image from "next/image";
 import NavItems from "@/components/NavItems";
 import UserDropdown from "@/components/UserDropdown";
+import {searchStocks} from "@/lib/actions/finhub.actions";
 
-const Header = () => {
+const Header =async () => {
+
+    const initialStocks = await searchStocks();
+
     return (
         <header className="sticky top-0 header">
             <div className="container header-wrapper">
@@ -12,9 +16,9 @@ const Header = () => {
                     <Image src="/assets/icons/logo.svg" alt="Stoxly" width={50} height={32} className="h-8 w-auto cursor-pointer" />
                 </Link>
                 <nav className="hidden sm:block">
-                    <NavItems/>
+                    <NavItems initialStocks={initialStocks} />
                 </nav>
-                <UserDropdown />
+                <UserDropdown initialStocks={initialStocks}/>
             </div>
         </header>
     )
